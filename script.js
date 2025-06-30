@@ -1,31 +1,24 @@
-// Sahifa to‘liq yuklanganda "fade-in" klassini qo‘shish
-document.addEventListener("DOMContentLoaded", function () {
-    document.body.classList.add("fade-in");
-});
+document.addEventListener("DOMContentLoaded", () => {
+    const projectList = document.getElementById("projectList");
 
-// Scroll qilinganda bo‘limlarni asta ko‘rsatish
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('show');
-        }
-    });
-}, {
-    threshold: 0.2
-});
+    fetch("https://api.github.com/users/xavfli/repos")
+        .then(res => res.json())
+        .then(repos => {
+            repos.forEach(repo => {
+                const card = document.createElement("div");
+                card.className = "card";
 
-document.querySelectorAll('section').forEach(section => {
-    observer.observe(section);
-});
+                card.innerHTML = `
+                    <h3>${repo.name}</h3>
+                    <p>${repo.description || "Tavsif mavjud emas."}</p>
+                    <a href="${repo.html_url}" target="_blank">GitHubda ko‘rish</a>
+                `;
 
-// Tugmalarga interaktiv animatsiya
-document.querySelectorAll('.btn').forEach(btn => {
-    btn.addEventListener('mouseenter', () => {
-        btn.style.transform = "scale(1.05)";
-        btn.style.boxShadow = "0 5px 15px rgba(97, 218, 251, 0.4)";
-    });
-    btn.addEventListener('mouseleave', () => {
-        btn.style.transform = "scale(1)";
-        btn.style.boxShadow = "none";
-    });
+                projectList.appendChild(card);
+            });
+        })
+        .catch(error => {
+            projectList.innerHTML = "<p>Loyihalarni yuklashda xatolik yuz berdi.</p>";
+            console.error(error);
+        });
 });
