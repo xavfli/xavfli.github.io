@@ -1,17 +1,31 @@
+// Sahifa to‘liq yuklanganda "fade-in" klassini qo‘shish
 document.addEventListener("DOMContentLoaded", function () {
-  fetch("https://api.github.com/users/xavfli/repos")
-    .then(response => response.json())
-    .then(repos => {
-      const list = document.getElementById("projects-list");
-      repos.slice(0, 6).forEach(repo => {
-        const div = document.createElement("div");
-        div.classList.add("project");
-        div.innerHTML = `
-          <h3>${repo.name}</h3>
-          <p>${repo.description || "Loyiha haqida ma’lumot mavjud emas."}</p>
-          <a href="${repo.html_url}" target="_blank">GitHubda ko‘rish</a>
-        `;
-        list.appendChild(div);
-      });
+    document.body.classList.add("fade-in");
+});
+
+// Scroll qilinganda bo‘limlarni asta ko‘rsatish
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+        }
+    });
+}, {
+    threshold: 0.2
+});
+
+document.querySelectorAll('section').forEach(section => {
+    observer.observe(section);
+});
+
+// Tugmalarga interaktiv animatsiya
+document.querySelectorAll('.btn').forEach(btn => {
+    btn.addEventListener('mouseenter', () => {
+        btn.style.transform = "scale(1.05)";
+        btn.style.boxShadow = "0 5px 15px rgba(97, 218, 251, 0.4)";
+    });
+    btn.addEventListener('mouseleave', () => {
+        btn.style.transform = "scale(1)";
+        btn.style.boxShadow = "none";
     });
 });
