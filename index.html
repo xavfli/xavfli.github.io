@@ -1,68 +1,73 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Shaxsiy portfolio - xavfli.github.io">
-    <title>Xavfli | Portfolio</title>
-    <link rel="stylesheet" href="style.css" />
-    <script defer src="script.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boburbek | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <header>
         <div class="container">
-            <h1 class="logo">Xavfli</h1>
-            <nav>
-                <ul>
-                    <li><a href="#home">Asosiy</a></li>
-                    <li><a href="#about">Men haqimda</a></li>
-                    <li><a href="#projects">Loyihalar</a></li>
-                    <li><a href="#contact">Aloqa</a></li>
-                </ul>
-            </nav>
+            <h1>Salom, men Boburbek</h1>
+            <p>Full Stack Web Dasturchi | Django | HTML | JS</p>
+            <a href="#projects" class="btn">Loyihalarimni ko‘rish</a>
         </div>
     </header>
 
-    <section id="home" class="hero">
+    <section id="about">
         <div class="container">
-            <h2 class="fade-in">Salom, men <span class="accent">Xavfli</span></h2>
-            <p class="fade-in delay-1">Men web dasturchiman, open source loyihalarga hissa qo‘shaman va frontend & backend bilan shug‘ullanaman.</p>
-            <a href="#projects" class="btn fade-in delay-2">Ishlarimni ko‘rish</a>
+            <h2>👨‍💻 Men haqimda</h2>
+            <p>
+                Assalomu alaykum! Men <strong>Boburbek</strong>, Muhammad al-Xorazmiy nomidagi Toshkent Axborot Texnologiyalari Universiteti talabasi va veb dasturchiman.
+                Frontend va backend yo‘nalishlarida kuchli bilimga egaman. Django, REST API, HTML/CSS, JavaScript bilan ishlash menga zavq beradi.
+            </p>
+            <h3>🔧 Qobiliyatlarim:</h3>
+            <ul>
+                <li>✅ Django / Django REST Framework</li>
+                <li>✅ HTML5 / CSS3 / Bootstrap</li>
+                <li>✅ JavaScript / DOM manipulyatsiyasi</li>
+                <li>✅ Git va GitHub</li>
+                <li>✅ Microsoft .docx / .xlsx fayllar bilan ishlash</li>
+            </ul>
+            <h3>🎯 Maqsadim:</h3>
+            <p>Texnologiyalar yordamida foydali va bardavom loyihalar yaratish.</p>
         </div>
     </section>
 
-    <section id="about" class="section">
+    <section id="projects">
         <div class="container">
-            <h2>Men haqimda</h2>
-            <p>Men IT sohasiga qiziqqan, mustaqil dasturchiman. Django, React, GitHub Pages, REST API, va boshqa texnologiyalar bilan ishlayman. Maqsadim — foydalanuvchilarga qulay, zamonaviy va xavfsiz tizimlar yaratish. Portfolio saytim orqali o‘z loyihalarimni taqdim etaman va ochiq manbali jamiyatga hissa qo‘shaman.</p>
-        </div>
-    </section>
-
-    <section id="projects" class="section">
-        <div class="container">
-            <h2>Loyihalar</h2>
-            <div class="projects-grid" id="projectList">
-                <!-- GitHub API orqali yuklanadi -->
+            <h2>📁 Loyihalar</h2>
+            <div class="project">
+                <h3>📄 Amaliyot Hujjatlari Avtomatlashtirish</h3>
+                <p>Django yordamida .docx (shartnoma, kundalik, yo‘llanma) fayllarni avtomatik generatsiya qilish tizimi. Excel yoki Worddan yuklab ma’lumot kiritish va ZIP holatda yuklab olish imkoniyati.</p>
+                <a href="https://github.com/xavfli/amaliyotdocx" target="_blank">GitHubda ko‘rish →</a>
+            </div>
+            <div class="project">
+                <h3>🌐 Portfolio Sayt</h3>
+                <p>GitHub Pages orqali deploy qilingan, HTML/CSS va JavaScript asosida yasalgan shaxsiy portfolio sahifa.</p>
+                <a href="https://xavfli.github.io/" target="_blank">Saytni ko‘rish →</a>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="section">
+    <section id="contact">
         <div class="container">
-            <h2>Aloqa</h2>
-            <form>
-                <input type="text" placeholder="Ismingiz" required />
-                <input type="email" placeholder="Email manzilingiz" required />
-                <textarea placeholder="Xabar yozing..." required></textarea>
-                <button type="submit">Yuborish</button>
-            </form>
+            <h2>📞 Aloqa</h2>
+            <p>Menga quyidagi manzillar orqali bog‘lanishingiz mumkin:</p>
+            <ul>
+                <li>Email: <a href="mailto:xavfli.dev@gmail.com">xavfli.dev@gmail.com</a></li>
+                <li>GitHub: <a href="https://github.com/xavfli" target="_blank">github.com/xavfli</a></li>
+            </ul>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 xavfli.github.io | Barcha huquqlar himoyalangan</p>
+            <p>&copy; 2025 Boburbek. Barcha huquqlar himoyalangan.</p>
         </div>
     </footer>
+
 </body>
 </html>

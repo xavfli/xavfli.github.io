@@ -1,24 +1,56 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const projectList = document.getElementById("projectList");
+// Dark mode toggle
+const themeToggle = document.getElementById("theme-toggle");
+themeToggle.addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode");
+  themeToggle.innerText = document.body.classList.contains("dark-mode")
+    ? "🌙 Dark"
+    : "☀️ Light";
+});
 
-    fetch("https://api.github.com/users/xavfli/repos")
-        .then(res => res.json())
-        .then(repos => {
-            repos.forEach(repo => {
-                const card = document.createElement("div");
-                card.className = "card";
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener("click", function (e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute("href")).scrollIntoView({
+      behavior: "smooth",
+    });
+  });
+});
 
-                card.innerHTML = `
-                    <h3>${repo.name}</h3>
-                    <p>${repo.description || "Tavsif mavjud emas."}</p>
-                    <a href="${repo.html_url}" target="_blank">GitHubda ko‘rish</a>
-                `;
+// Fade-in animation on scroll
+const faders = document.querySelectorAll(".fade-in");
+const appearOptions = {
+  threshold: 0.1,
+  rootMargin: "0px 0px -50px 0px"
+};
 
-                projectList.appendChild(card);
-            });
-        })
-        .catch(error => {
-            projectList.innerHTML = "<p>Loyihalarni yuklashda xatolik yuz berdi.</p>";
-            console.error(error);
-        });
+const appearOnScroll = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    entry.target.classList.add("appear");
+    observer.unobserve(entry.target);
+  });
+}, appearOptions);
+
+faders.forEach(fader => {
+  appearOnScroll.observe(fader);
+});
+
+// Active nav item highlight on scroll
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll("nav a");
+
+window.addEventListener("scroll", () => {
+  let current = "";
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 100;
+    if (pageYOffset >= sectionTop) current = section.getAttribute("id");
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove("active");
+    if (link.getAttribute("href").includes(current)) {
+      link.classList.add("active");
+    }
+  });
 });
